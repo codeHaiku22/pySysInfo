@@ -1,5 +1,5 @@
 # pySysInfo
-This tool utility is a purely Python-based system information tool similar to neofetch, fastfetch, et al.
+This tool utility is a purely Python-based system information tool for GNU/Linux and is similar to neofetch, fastfetch, et al.
 
 ## Features
 Displays: 
