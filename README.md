@@ -14,7 +14,7 @@ Procedure
 1. Download all files within this repository.
 2. Change the mode of the main file so that it is executable.
    ```shell
-   chmod u+x psi_main.py
+   chmod u+x pysysinfo.py
    ```
 
 ## Usage
@@ -22,7 +22,7 @@ Procedure
 ### Simple Usage (Without Weather)
 
 ```shell
-./py_main.py
+./pysysinfo.py
 ```
 
 ![images](images/screenshot0.png)
@@ -33,7 +33,7 @@ Weather can be displayed in 3 different levels of detail.  In the example below,
 #### Low Weather Detail
 
 ```shell
-./py_main.py -w 90210 1
+./pysysinfo.py -w 90210 1
 ```
 
 ![images](images/screenshot1.png)
@@ -41,7 +41,7 @@ Weather can be displayed in 3 different levels of detail.  In the example below,
 #### Medium Weather Detail
 
 ```shell
-./py_main.py -w 90210 2
+./pysysinfo.py -w 90210 2
 ```
 
 ![images](images/screenshot2.png)
@@ -49,7 +49,7 @@ Weather can be displayed in 3 different levels of detail.  In the example below,
 #### High Weather Detail
 
 ```shell
-./py_main.py -w 90210 3
+./pysysinfo.py -w 90210 3
 ```
 
 ![images](images/screenshot3.png)
@@ -61,7 +61,7 @@ Below is the output of the help information.
 PySystemInfo is a utility that provides system statistics, resource usage details, and a customizable weather forecast (optional).
 
 Usage:
-  psi_main [flags]
+  pysysinfo [flags]
 
 Flags:
   -h, --help                  Help for PySystemInfo
