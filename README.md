@@ -25,7 +25,7 @@ Procedure
 ./py_main.py
 ```
 
-![images](screenshot0.png)
+![images](images/screenshot0.png)
 
 ### Advanced Usage (With Weather)
 Weather can be displayed in 3 different levels of detail.  In the example below, the postal code of "90210" is being provided as input.
@@ -36,7 +36,7 @@ Weather can be displayed in 3 different levels of detail.  In the example below,
 ./py_main.py -w 90210 1
 ```
 
-![images](screenshot1.png)
+![images](images/screenshot1.png)
 
 #### Medium Weather Detail
 
@@ -44,7 +44,7 @@ Weather can be displayed in 3 different levels of detail.  In the example below,
 ./py_main.py -w 90210 2
 ```
 
-![images](screenshot2.png)
+![images](images/screenshot2.png)
 
 #### High Weather Detail
 
@@ -52,7 +52,7 @@ Weather can be displayed in 3 different levels of detail.  In the example below,
 ./py_main.py -w 90210 3
 ```
 
-![images](screenshot3.png)
+![images](images/screenshot3.png)
 
 ## Help
 Below is the output of the help information.
