@@ -68,13 +68,13 @@ def get_usage_sparkline(percent):
 def print_help():
     try:
         print('')
-        print('PySystemInfo is a utility that provides system statistics, resource usage details, and a customizable weather forecast (optional).')
+        print('PySysInfo is a utility that provides system statistics, resource usage details, and a customizable weather forecast (optional).')
         print('')
         print('Usage:')
-        print('  psi_main [flags]')
+        print('  pysysinfo [flags]')
         print('')
         print('Flags:')
-        print('  -h, --help                  Help for PySystemInfo')
+        print('  -h, --help                  Help for PySysInfo')
         print('  -w, --weather postalcode n  Display weather forecast in output.  Provide a postalcode and indicate level of detail from 1-3, with 3 being most detailed.')
         print('')
     except Exception as ex:
