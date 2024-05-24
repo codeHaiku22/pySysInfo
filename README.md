@@ -58,12 +58,12 @@ Weather can be displayed in 3 different levels of detail.  In the example below,
 Below is the output of the help information.
 
 ```
-PySystemInfo is a utility that provides system statistics, resource usage details, and a customizable weather forecast (optional).
+PySysInfo is a utility that provides system statistics, resource usage details, and a customizable weather forecast (optional).
 
 Usage:
   pysysinfo [flags]
 
 Flags:
-  -h, --help                  Help for PySystemInfo
+  -h, --help                  Help for PySysInfo
   -w, --weather postalcode n  Display weather forecast in output.  Provide a postalcode and indicate level of detail from 1-3, with 3 being most detailed.
 ```
