@@ -67,3 +67,21 @@ Flags:
   -h, --help                  Help for PySysInfo
   -w, --weather postalcode n  Display weather forecast in output.  Provide a postalcode and indicate level of detail from 1-3, with 3 being most detailed.
 ```
+
+## Troubleshooting
+
+### Problem: Python Interpreter not Found
+The Python files within this application assume that your system's Python interpreter is located at `/usr/bin/python`.
+
+```shell
+./pysysinfo.py
+
+bash: ./pysysinfo.py: /usr/bin/python: bad interpreter: No such file or directory
+```
+
+#### Solution
+You can either correct the shebang line (first line) in each file and supply the correct location 
+
+OR 
+
+You can install the `python-is-python3` package.
