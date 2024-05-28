@@ -1,4 +1,3 @@
-#!/usr/bin/python
 import socket
 
 def get_hostname_domain_list():
@@ -25,4 +24,4 @@ def get_internal_ip_address():
     except Exception as ex:
         internalIP = 'unknown'
     finally:
-        return internalIP        
+        return internalIP

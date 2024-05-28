@@ -1,4 +1,5 @@
-#!/usr/bin/python
+#!/usr/bin/python3
+
 import psi_file as pfl
 import psi_formatting as pfmt
 import psi_network as pnet

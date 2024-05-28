@@ -1,4 +1,3 @@
-#!/usr/bin/python
 import subprocess
 
 def get_dad_joke():
@@ -15,7 +14,7 @@ def get_external_ip_address():
     except Exception as ex:
         externalIP = 'unknown'
     finally:
-        return externalIP      
+        return externalIP
     
 def get_forecast(location, detail):
     try:
@@ -37,7 +36,7 @@ def get_forecast(location, detail):
     except Exception as ex:
         forecast = 'unknown'
     finally:
-        return forecast    
+        return forecast
 
 def get_gpu_list(microsoftWSL):
     try:
@@ -51,4 +50,3 @@ def get_gpu_list(microsoftWSL):
         gpu.append('unknown')
     finally:
         return gpu
-    

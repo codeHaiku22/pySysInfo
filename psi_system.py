@@ -1,4 +1,3 @@
-#!/usr/bin/python
 import datetime
 import platform
 
@@ -14,7 +13,7 @@ def get_architecture_list():
         architecture.append('bit:unknown')
         architecture.append('executable:unknown')
         architecture.append('machine:unknown')
-        architecture.append('processor:unknown')        
+        architecture.append('processor:unknown')
     finally:
         return architecture
 
@@ -37,6 +36,6 @@ def get_kernel_info_list():
     except Exception as ex:
         kernelInfo = []
         kernelInfo.append('kernel:unknown')
-        kernelInfo.append('microsoftWSL:False')         
+        kernelInfo.append('microsoftWSL:False')
     finally:
         return kernelInfo

@@ -1,4 +1,3 @@
-#!/usr/bin/python
 import datetime
 import os
 import shutil
@@ -34,20 +33,20 @@ def get_cpu_list():
                     elif (unit == 'ghz'):
                         unit = 'THz'
                     elif (unit == 'thz'):
-                        unit = 'PHz'                    
+                        unit = 'PHz'
                 speed = ' @ ' + str(cycles) + unit 
             if (line.split(':')[0].strip().lower() == 'cpu cores'):
                 cores = ' (' + line.split(':')[1].strip() + ' core)' if (line.split(':')[1].strip() == 1) else ' (' + line.split(':')[1].strip() + ' cores)'
         if (cpu != ''):
             entry = (cpu + speed + cores).strip()
-            if (entry not in cpuInfo): cpuInfo.append(entry)                
+            if (entry not in cpuInfo): cpuInfo.append(entry)
         cpuInfo.sort()
     except Exception as ex:
         cpuInfo = []
         cpuInfo.append('unknown')
     finally:
-        file.close()   
-        return cpuInfo       
+        file.close()
+        return cpuInfo
 
 def get_cpu_percent():
     try:
@@ -77,7 +76,7 @@ def get_disk_usage_list(microsoftWSL):
             fs = dm.split(' ')[2].strip()
             if (microsoftWSL and mntpt.startswith('/mnt/wsl')): continue
             shutil.disk_usage(mntpt)       # x= usage(total=1081101176832, used=4672487424, free=1021436334080) | x.free = 1021436334080 etc. ...
-            dskUsd = shutil.disk_usage(mntpt).used 
+            dskUsd = shutil.disk_usage(mntpt).used
             dskTtl = shutil.disk_usage(mntpt).total
             dskPrcnt = int((dskUsd / dskTtl) * 100)
             if (dskTtl > 1024**5):
@@ -96,9 +95,9 @@ def get_disk_usage_list(microsoftWSL):
                 coefficient = 1024**1
                 unit = 'KB'
             else:
-                coefficient = 1    
+                coefficient = 1
                 unit = 'B'
-            dskUsd /= coefficient 
+            dskUsd /= coefficient
             dskTtl /= coefficient
             dskusg.append('device:' + dev)
             dskusg.append('mount:' + mntpt)
@@ -117,25 +116,25 @@ def get_disk_usage_list(microsoftWSL):
         dskusg.append('amt_total:' + '{0:.1f}'.format(-1) + ' ' + 'B')
         dskusg.append('pct_used:' + str(-1))        
     finally:
-        return diskUsage      
+        return diskUsage
 
 def get_distribution():
     try:
        #platform.freedesktop_os_release()
         distroInfo = []
         for object in os.scandir('/etc'):
-            if ('release' in object.name and object.is_file):
+            if ('release' in object.name) and (object.is_file() or object.is_symlink()):
                 with open(os.path.join('/etc', object.name), 'r') as file:
                     distroInfo += file.readlines()
             else:
-                continue               
+                continue
         distroInfo = [item.replace('\n', '') for item in distroInfo]
         distroInfo = [item.replace('"', '') for item in distroInfo]
         pnIndex = [item.find('PRETTY_NAME') for item in distroInfo]
         ddIndex = [item.find('DISTRIB_DESCRIPTION') for item in distroInfo]
         distribution = ''
         if (0 in pnIndex): distribution = distroInfo[pnIndex.index(0)].split('=')[1]
-        elif (0 in ddIndex): distribution = distroInfo[pnIndex.index(0)].split('=')[1]        
+        elif (0 in ddIndex): distribution = distroInfo[ddIndex.index(0)].split('=')[1]
         else:
             distrib_id = ''
             distrib_release = ''
@@ -164,12 +163,12 @@ def get_distribution():
                 if (len(distrib_release) > 0):
                     distribution += ' ' + distrib_release
             else:
-                distribution = 'Unknown'
-        distribution = distribution.strip()                
+                distribution = 'unknown'
+        distribution = distribution.strip()
     except Exception as ex:
         distribution = 'unknown'
     finally:
-        return distribution              
+        return distribution
 
 def get_load_average():
     try:
@@ -180,7 +179,7 @@ def get_load_average():
     except Exception as ex:
         loadAverage = '-1, -1, -1'
     finally:
-        return loadAverage 
+        return loadAverage
 
 def get_ram_usage_list():
     try:
@@ -196,9 +195,9 @@ def get_ram_usage_list():
             memTotal = memInfo[mtIndex.index(0)].split(':')[1].strip()
             memAvail = memInfo[maIndex.index(0)].split(':')[1].strip()
             memTtl = int(memTotal.split()[0])
-            memAvlbl = int(memAvail.split()[0])  
+            memAvlbl = int(memAvail.split()[0])
             memUsd = int(memTtl - memAvlbl)
-            unit = memTotal.split()[1].strip().lower()              
+            unit = memTotal.split()[1].strip().lower()
             ramPercent = int((memUsd / memTtl) * 100)
             if (memTtl > 1024**5):
                 coefficient = 1024**5
@@ -238,9 +237,9 @@ def get_ram_usage_list():
                 elif (coefficient == 1): unit = 'GB'
             elif (unit == 'tb'):
                 if (coefficient == 1024**1): unit = 'PB'
-                elif (coefficient == 1): unit = 'TB'           
+                elif (coefficient == 1): unit = 'TB'
             elif (unit == 'pb'):
-                if (coefficient == 1): unit = 'PB'  
+                if (coefficient == 1): unit = 'PB'
         else:
             ramPercent = -1
         ramUsage.append('amt_used:' + '{0:.1f}'.format(memUsd) + ' ' + unit)
@@ -249,9 +248,9 @@ def get_ram_usage_list():
         ramPercent = -1
         ramUsage = []
         ramUsage.append('amt_used:' + '{0:.1f}'.format(-1) + ' ' + 'B')
-        ramUsage.append('amt_total:' + '{0:.1f}'.format(-1) + ' ' + 'B')        
+        ramUsage.append('amt_total:' + '{0:.1f}'.format(-1) + ' ' + 'B')
     finally:
-        return ramPercent, ramUsage                     
+        return ramPercent, ramUsage
 
 def get_uptime():
     try:

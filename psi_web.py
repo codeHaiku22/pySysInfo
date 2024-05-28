@@ -1,5 +1,3 @@
-#!/usr/bin/python
-
 def get_forecast(location, verbosity):
     try:
         import requests

@@ -1,5 +1,3 @@
-#!/usr/bin/python
-
 class bcolors:
     BGBLACK = '\033[40m'
     BGRED = '\033[41m'
@@ -8,7 +6,7 @@ class bcolors:
     BGBLUE = '\033[44m'
     BGPURPLE = '\033[45m'
     BGCYAN = '\033[46m'
-    BGLIGHTGRAY = '\033[47m'                        
+    BGLIGHTGRAY = '\033[47m'
     GRAY = '\033[90m'
     RED = '\033[91m'
     GREEN = '\033[92m'
@@ -35,7 +33,7 @@ def get_usage_sparkline(percent):
         if (percent < 0):
             free *= (length - 2)
             free = bcolors.GRAY + free + bcolors.NONE
-            sparkline = '[' + '<!' + free + ']' + str(percent).rjust(4, ' ') + '%'  
+            sparkline = '[' + '<!' + free + ']' + str(percent).rjust(4, ' ') + '%'
         elif (percent > 100):
             usage *= (length - 2)
             usage = bcolors.RED + usage + bcolors.NONE
@@ -44,23 +42,23 @@ def get_usage_sparkline(percent):
             usage *= (round(length*(percent/100)))
             free *=  (length - len(usage))
             free = bcolors.GRAY + free + bcolors.NONE
-            if (percent == 0): 
+            if (percent == 0):
                 usage = bcolors.GRAY + usage + bcolors.NONE
-                pctUsed = bcolors.GRAY + str(percent).rjust(4, ' ') + '%'  + bcolors.NONE            
-            elif (percent < 80): 
+                pctUsed = bcolors.GRAY + str(percent).rjust(4, ' ') + '%'  + bcolors.NONE
+            elif (percent < 80):
                 usage = bcolors.GREEN + usage + bcolors.NONE
                 pctUsed = bcolors.GREEN + str(percent).rjust(4, ' ') + '%'  + bcolors.NONE
-            elif (percent < 95): 
+            elif (percent < 95):
                 usage = bcolors.YELLOW + usage + bcolors.NONE
                 pctUsed = bcolors.YELLOW + str(percent).rjust(4, ' ') + '%'  + bcolors.NONE
-            elif (percent <= 100): 
+            elif (percent <= 100):
                 usage = bcolors.RED + usage + bcolors.NONE
                 pctUsed = bcolors.RED + str(percent).rjust(4, ' ') + '%'  + bcolors.NONE
             sparkline = '[' + usage + free + ']' + pctUsed
     except Exception as ex:
         message = 'ERROR!'
         preamble = free * int(((length - len(message)) / 2)) 
-        postamble = free * (length - len(message) - len(preamble))           
+        postamble = free * (length - len(message) - len(preamble))
         sparkline = '[' + preamble + message + postamble + ']' + str(percent).rjust(4, ' ') + '%'
     finally:
         return sparkline
@@ -84,7 +82,7 @@ def print_output(type, output='', keyLen=0, key='', value='', usagePct=0, usageA
     try:
         if (type.lower() == 'heading'):
             output = '<~~ ' + output + ' ~~>'
-            print(bcolors.MAGENTA + output + bcolors.NONE)    
+            print(bcolors.MAGENTA + output + bcolors.NONE)
         if (type.lower() == 'simple'):
             print(bcolors.GREEN + output + bcolors.NONE)
         if (type.lower() == 'keyvalue'):
