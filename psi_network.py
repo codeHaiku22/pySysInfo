@@ -19,8 +19,12 @@ def get_hostname_domain_list():
 
 def get_internal_ip_address():
     try:
-        internalIP = socket.gethostbyname(socket.gethostname())
-        internalIP = internalIP.strip()
+        sock = socket.gethostbyname(socket.gethostname())
+        internalIP = sock.strip()
+        if internalIP.startswith('127.0'):
+            sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+            sock.connect(('10.255.255.255', 1))
+            internalIP = sock.getsockname()[0]        
     except Exception as ex:
         internalIP = 'unknown'
     finally:
