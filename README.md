@@ -71,7 +71,7 @@ Flags:
 ## Troubleshooting
 
 ### Problem: Python Interpreter not Found
-The Python files within this application assume that your system's Python interpreter is located at `/usr/bin/python`.
+The `pysysinfo.py` file of this application requires that your system's Python version is 3.x and your interpreter is located at `/usr/bin/python3`.
 
 ```shell
 ./pysysinfo.py
@@ -79,9 +79,9 @@ The Python files within this application assume that your system's Python interp
 bash: ./pysysinfo.py: /usr/bin/python: bad interpreter: No such file or directory
 ```
 
-#### Solution
-You can either correct the shebang line (first line) in each file and supply the correct location 
+### Solution: Indicate Location of Python Installation
+Correct the shebang line (first line) in the `pysysinfo.py` file and supply the correct location of your Python interpreter.
 
-OR 
-
-You can install the `python-is-python3` package.
+```python
+#!/usr/bin/python3
+```
