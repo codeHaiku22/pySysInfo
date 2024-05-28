@@ -86,7 +86,7 @@ def main():
             i += 1
         else:
             pfmt.print_output(type='keyvalue', keyLen=maxKeyLen, key='GPU', value=gpu)  
-    pfmt.print_output(type='keyvalue', keyLen=maxKeyLen, key='Domain IP', value=internalIP)               
+    pfmt.print_output(type='keyvalue', keyLen=maxKeyLen, key='Internal IP', value=internalIP)               
     pfmt.print_output(type='keyvalue', keyLen=maxKeyLen, key='Public IP', value=externalIP) 
     pfmt.print_output(type='keyvalue', keyLen=maxKeyLen, key='Uptime', value=upTime) 
     print('')
