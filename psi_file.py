@@ -257,9 +257,14 @@ def get_uptime():
         with open('/proc/uptime', 'r') as file:
             uptimeSeconds = float(file.readline().split()[0])
         uptimeCalc = str(datetime.timedelta(seconds=uptimeSeconds))
-        uptimeDays = uptimeCalc.split(',')[0].strip()
-        uptimeHMS = uptimeCalc.split(',')[1].strip()
-        upTime = uptimeDays + ', ' + uptimeHMS.split(':')[0] + ' hours, ' + uptimeHMS.split(':')[1] + ' minutes'
+        if (',' in uptimeCalc):
+            uptimeDays = uptimeCalc.split(',')[0].strip()
+            uptimeHMS = uptimeCalc.split(',')[1].strip()
+            upTime = uptimeDays + ', ' + uptimeHMS.split(':')[0] + ' hours, ' + uptimeHMS.split(':')[1] + ' minutes'
+        else:
+            uptimeDays = '0'
+            uptimeHMS = uptimeCalc
+            upTime = uptimeDays + ' days, ' + uptimeHMS.split(':')[0] + ' hours, ' + uptimeHMS.split(':')[1] + ' minutes'
     except Exception as ex:
         upTime = '-1 days, -1 hours, -1 minutes'
     finally:
