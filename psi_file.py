@@ -115,6 +115,7 @@ def get_disk_usage_list(microsoftWSL):
         dskusg.append('amt_used:' + '{0:.1f}'.format(-1) + ' ' + 'B')
         dskusg.append('amt_total:' + '{0:.1f}'.format(-1) + ' ' + 'B')
         dskusg.append('pct_used:' + str(-1))        
+        diskUsage.append(dskusg)
     finally:
         return diskUsage
 
